@@ -109,12 +109,12 @@
   footer{position:relative;z-index:2;background:var(--ink);color:#f3e6c8;display:grid;grid-template-columns:330px 1fr 348px;gap:20px;align-items:center;padding:0 32px}
   .progress{display:flex;align-items:center;gap:9px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:800}
   .track{height:5px;background:#41655a;flex:1;position:relative}.track i{display:block;width:62%;height:100%;background:var(--amber)}
-  .lesson{font-family:Georgia,serif;font-size:16px;text-align:center}.lesson em{color:var(--amber-2)}
+  .lesson{font-family:Georgia,serif;font-size:16px;text-align:center}.lesson em{color:var(--amber-2)}.signature{display:block;margin-top:6px;font:700 9px ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;color:#a9c0b8}
   .next{border:0;background:transparent;padding:8px 0;text-align:right;font:inherit;font-size:10px;text-transform:uppercase;letter-spacing:.09em;color:#c9d7d1;cursor:pointer}.next b{color:#fff;display:block;font-size:12px;margin-top:3px}.next:hover b{color:var(--amber-2)}.next:focus-visible{outline:2px solid var(--amber-2);outline-offset:5px;border-radius:2px}
   .shake{animation:shake .22s linear 2}@keyframes shake{25%{transform:translateX(2px)}75%{transform:translateX(-2px)}}
   @media(max-width:1100px){body{padding:0}.app{height:auto;min-height:100vh}.workspace{grid-template-columns:1fr 1.5fr}.station:nth-child(3){grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:18px}.question{grid-column:1/-1}footer{grid-template-columns:1fr 1fr}.next{grid-column:1/-1;text-align:center}}
 </style>
-<link rel="stylesheet" href="enhancements.css?v=20260721-2">
+<link rel="stylesheet" href="enhancements.css?v=20260721-3">
 </head>
 <body>
 <main class="app" id="coffeeLab">
@@ -384,7 +384,7 @@
 
   <footer>
     <div class="progress">Recorrido <div class="track"><i id="routeProgress"></i></div> <span id="routeCount">01 / 05</span></div>
-    <div class="lesson">El TCL convierte ruido de producción en una señal que podemos <em>poner a prueba.</em></div>
+    <div class="lesson">El TCL convierte ruido de producción en una señal que podemos <em>poner a prueba.</em><small class="signature">Dr. Coronado (abxda) · construido con GPT‑5.6 Sol · diseño asistido por Fable</small></div>
     <button type="button" class="next" id="nextStationBtn" aria-label="Ir a la siguiente estación">Siguiente estación<b id="nextStationLabel">Construir el intervalo →</b></button>
   </footer>
 </main>
@@ -429,6 +429,6 @@
   new ResizeObserver(draw).observe(canvas);calc();
 })();
 </script>
-<script src="app.js?v=20260721-2"></script>
+<script src="app.js?v=20260721-3"></script>
 </body>
 </html>

@@ -26,6 +26,7 @@
   };
 
   const state = {
+    currentStep: 1,
     running: false,
     timer: null,
     sampleCount: 0,
@@ -874,18 +875,29 @@
   }
 
   function showStep(stepNumber) {
+    state.currentStep = clamp(stepNumber, 1, 5);
     $$(".step-tab").forEach((button) => {
-      const active = +button.dataset.step === stepNumber;
+      const active = +button.dataset.step === state.currentStep;
       button.classList.toggle("active", active);
       button.setAttribute("aria-pressed", String(active));
     });
     $$(".step-panel").forEach((panel) => {
-      const active = +panel.dataset.panel === stepNumber;
+      const active = +panel.dataset.panel === state.currentStep;
       panel.hidden = !active;
       panel.classList.toggle("active", active);
     });
-    if (stepNumber === 2) requestAnimationFrame(drawCiRain);
-    if (stepNumber === 4) requestAnimationFrame(() => { drawTestChart(); drawStandardize(); });
+    const nextLabels = [
+      "Construir el intervalo \u2192",
+      "Plantear la hipótesis \u2192",
+      "Medir la evidencia \u2192",
+      "Decidir e interpretar \u2192",
+      "Volver a extraer una muestra \u21bb",
+    ];
+    $("#nextStationLabel").textContent = nextLabels[state.currentStep - 1];
+    $("#routeCount").textContent = `${String(state.currentStep).padStart(2, "0")} / 05`;
+    $("#routeProgress").style.width = `${state.currentStep * 20}%`;
+    if (state.currentStep === 2) requestAnimationFrame(drawCiRain);
+    if (state.currentStep === 4) requestAnimationFrame(() => { drawTestChart(); drawStandardize(); });
   }
 
   // ---- Cuestionarios de autoevaluación ----
@@ -948,6 +960,10 @@
   $("#drawSampleBtn").addEventListener("click", () => takeObservedSample());
   $("#newExperimentBtn").addEventListener("click", () => takeObservedSample({ moveToFirstStep: true }));
   $$(".step-tab").forEach((button) => button.addEventListener("click", () => showStep(+button.dataset.step)));
+  $("#nextStationBtn").addEventListener("click", () => {
+    showStep(state.currentStep === 5 ? 1 : state.currentStep + 1);
+    $("#guidedLab").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+  });
 
   $$(".tail-picker button").forEach((button) => button.addEventListener("click", () => {
     state.direction = button.dataset.direction;

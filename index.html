@@ -110,9 +110,9 @@
   .progress{display:flex;align-items:center;gap:9px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:800}
   .track{height:5px;background:#41655a;flex:1;position:relative}.track i{display:block;width:62%;height:100%;background:var(--amber)}
   .lesson{font-family:Georgia,serif;font-size:16px;text-align:center}.lesson em{color:var(--amber-2)}
-  .next{text-align:right;font-size:10px;text-transform:uppercase;letter-spacing:.09em;color:#c9d7d1}.next b{color:#fff;display:block;font-size:12px;margin-top:3px}
+  .next{border:0;background:transparent;padding:8px 0;text-align:right;font:inherit;font-size:10px;text-transform:uppercase;letter-spacing:.09em;color:#c9d7d1;cursor:pointer}.next b{color:#fff;display:block;font-size:12px;margin-top:3px}.next:hover b{color:var(--amber-2)}.next:focus-visible{outline:2px solid var(--amber-2);outline-offset:5px;border-radius:2px}
   .shake{animation:shake .22s linear 2}@keyframes shake{25%{transform:translateX(2px)}75%{transform:translateX(-2px)}}
-  @media(max-width:1100px){body{padding:0}.app{height:auto;min-height:100vh}.workspace{grid-template-columns:1fr 1.5fr}.station:nth-child(3){grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:18px}.question{grid-column:1/-1}footer{grid-template-columns:1fr 1fr}.next{display:none}}
+  @media(max-width:1100px){body{padding:0}.app{height:auto;min-height:100vh}.workspace{grid-template-columns:1fr 1.5fr}.station:nth-child(3){grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:18px}.question{grid-column:1/-1}footer{grid-template-columns:1fr 1fr}.next{grid-column:1/-1;text-align:center}}
 </style>
 <link rel="stylesheet" href="enhancements.css">
 </head>
@@ -187,7 +187,7 @@
     </article>
   </section>
 
-  <section class="deep-dive" aria-labelledby="deepTitle">
+  <section class="deep-dive" id="guidedLab" aria-labelledby="deepTitle">
     <div class="deep-intro">
       <div>
         <span class="section-kicker">Del fenómeno a la decisión</span>
@@ -383,9 +383,9 @@
   </section>
 
   <footer>
-    <div class="progress">Recorrido <div class="track"><i></i></div> 03 / 05</div>
+    <div class="progress">Recorrido <div class="track"><i id="routeProgress"></i></div> <span id="routeCount">01 / 05</span></div>
     <div class="lesson">El TCL convierte ruido de producción en una señal que podemos <em>poner a prueba.</em></div>
-    <div class="next">Siguiente estación<b>Intervalos que cambian con n →</b></div>
+    <button type="button" class="next" id="nextStationBtn" aria-label="Ir a la siguiente estación">Siguiente estación<b id="nextStationLabel">Construir el intervalo →</b></button>
   </footer>
 </main>
 <script type="text/plain" id="legacy-script">

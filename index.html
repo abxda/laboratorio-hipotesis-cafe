@@ -114,7 +114,7 @@
   .shake{animation:shake .22s linear 2}@keyframes shake{25%{transform:translateX(2px)}75%{transform:translateX(-2px)}}
   @media(max-width:1100px){body{padding:0}.app{height:auto;min-height:100vh}.workspace{grid-template-columns:1fr 1.5fr}.station:nth-child(3){grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:18px}.question{grid-column:1/-1}footer{grid-template-columns:1fr 1fr}.next{grid-column:1/-1;text-align:center}}
 </style>
-<link rel="stylesheet" href="enhancements.css">
+<link rel="stylesheet" href="enhancements.css?v=20260721-2">
 </head>
 <body>
 <main class="app" id="coffeeLab">
@@ -429,6 +429,6 @@
   new ResizeObserver(draw).observe(canvas);calc();
 })();
 </script>
-<script src="app.js"></script>
+<script src="app.js?v=20260721-2"></script>
 </body>
 </html>
